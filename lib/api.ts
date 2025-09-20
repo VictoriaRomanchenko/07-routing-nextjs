@@ -1,7 +1,6 @@
 import axios from "axios";
 import type {Note} from "@/types/note";
 
-
 export interface NoteResponse {
     notes: Note[];
     totalPages: number;
@@ -13,10 +12,11 @@ export interface CreateNoteParams {
     tag: 'Todo' | 'Work' | 'Personal' | 'Meeting' | 'Shopping';
 }
 
-export const fetchNotes = async (page: number, query: string): Promise<NoteResponse> => {
+export const fetchNotes = async (page: number, query: string, tag?: string): Promise<NoteResponse> => {
     const params = {
         params:{
         search: query,
+        tag: tag,
         page: page,
         perPage: 12,
     },
